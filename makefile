@@ -1,7 +1,7 @@
-CXX=g++
-CFLAGS=-I.
+CXX = g++
+CFLAGS = -I.
 
-ODIR=obj
+ODIR = obj
 
 DEPS = simpleNode.h simpleLinkedList.h
 

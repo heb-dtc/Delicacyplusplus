@@ -18,6 +18,15 @@ void reverseString(char input[])
 	}
 }
 
+//reursive routine to compute the factorial of a given number
+int fact(int value)
+{
+	if(value <= 1)
+		return value;
+
+	return value * fact(value - 1);
+}
+
 void testSimpleLinkedList()
 {
 	SimpleLinkedList *list = new SimpleLinkedList();
@@ -67,4 +76,10 @@ int main(int argc, char* argv[])
 
 	//test the SimpleLinkedList
 	testSimpleLinkedList();
+
+	int res = fact(10);
+	printf("10! = %d\n", res);
+
+	res = fact(5);
+	printf("5! = %d\n", res);
 }
