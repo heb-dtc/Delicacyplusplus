@@ -130,6 +130,7 @@ void SimpleLinkedList::walkThrough()
 	int counter = 0;
 	int sum = 0;
 
+	printf("------ Traversal of a SimpleLinkedList ------\n");
 	while(node != NULL)
 	{
 		sum += node->mValue;

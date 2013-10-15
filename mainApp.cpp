@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "simpleLinkedList.h"
-#include "simpleNode.h"
 
 //take a string in input and reverse it
 void reverseString(char input[])
@@ -19,6 +18,45 @@ void reverseString(char input[])
 	}
 }
 
+void testSimpleLinkedList()
+{
+	SimpleLinkedList *list = new SimpleLinkedList();
+	list->walkThrough();
+
+	SimpleNode *nodeA = new SimpleNode(101);
+	SimpleNode *nodeB = new SimpleNode(102);
+	SimpleNode *nodeC = new SimpleNode(103);
+	SimpleNode *nodeD = new SimpleNode(104);
+	SimpleNode *nodeE = new SimpleNode(105);
+
+	list->insertAfter(nodeA, NULL);
+	list->walkThrough();
+
+	list->insertAfter(nodeB, nodeA);
+	list->insertAfter(nodeC, nodeB);
+	list->walkThrough();
+
+	list->addHead(nodeD);
+	list->walkThrough();
+
+	list->addTail(nodeE);
+	list->walkThrough();
+
+	list->removeNext(nodeA);
+	list->walkThrough();
+
+	list->removeNext(nodeD);
+	list->walkThrough();
+
+	//cleanup
+	delete nodeA;
+	delete nodeB;
+	delete nodeC;
+	delete nodeD;
+	delete nodeE;	
+	delete list;
+}
+
 int main(int argc, char* argv[]) 
 {
 	//test the reverse string routine
@@ -28,14 +66,5 @@ int main(int argc, char* argv[])
 	printf("Reversed string: %s\n", input);
 
 	//test the SimpleLinkedList
-	SimpleLinkedList *list = new SimpleLinkedList();
-	list->walkThrough();
-
-	SimpleNode *node = new SimpleNode(101);
-	list->insertAfter(node, NULL);
-	list->walkThrough();
-
-	//cleanup
-	delete list;
-	delete node;
+	testSimpleLinkedList();
 }
