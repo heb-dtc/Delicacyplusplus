@@ -1,16 +1,11 @@
 class BinaryTreeNode
 {
-private:
+public:
 	int mValue;
 	BinaryTreeNode *mLeftNode;
 	BinaryTreeNode *mRightNode;
-public:
-	BinaryTreeNode(int value)
-	{
-		mValue = value;
-		mLeftNode = NULL;
-		mRightNode = NULL;
-	}
+
+	BinaryTreeNode(int value);
 
 	bool add(int value);
 	bool search(int value);

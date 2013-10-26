@@ -1,4 +1,10 @@
 #include "simpleBinarySearchTree.h"
+#include <cstring>
+
+SimpleBinarySearchTree::SimpleBinarySearchTree()
+{
+	mRoot = NULL;
+}
 
 bool SimpleBinarySearchTree::add(int value)
 {

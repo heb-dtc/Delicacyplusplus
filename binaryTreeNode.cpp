@@ -1,4 +1,12 @@
 #include "binaryTreeNode.h"
+#include <cstring>
+
+BinaryTreeNode::BinaryTreeNode(int value)
+{
+	mValue = value;
+	mLeftNode = NULL;
+	mRightNode = NULL;
+}
 
 bool BinaryTreeNode::add(int value)
 {
@@ -50,12 +58,46 @@ bool BinaryTreeNode::search(int value)
 
 int BinaryTreeNode::getMinValue()
 {
-	if(mLeft == NULL)
+	if(mLeftNode == NULL)
 		return mValue;
-	return mLeft->getMinValue();
+	return mLeftNode->getMinValue();
 }
 
 BinaryTreeNode *BinaryTreeNode::remove(int value, BinaryTreeNode *parent)
 {
-	
+	if(value < mValue)
+	{
+		if(mLeftNode != NULL)
+		{
+			return mLeftNode->remove(value, this);
+		}
+		else 
+			return NULL;
+	}
+	else if(value > mValue)
+	{
+		if(mRightNode != NULL)
+		{
+			return mRightNode->remove(value, this);
+		}
+			else 
+				return NULL;
+	}
+	else
+	{
+		if(mLeftNode != NULL && mRightNode != NULL)
+		{
+			mValue = mRightNode->getMinValue();
+			return mRightNode->remove(mValue, this);
+		}
+		else if(parent->mLeftNode == this)
+		{
+			parent->mLeftNode = (mLeftNode != NULL) ? mLeftNode : mRightNode;
+            return this;
+        } 
+        else if (parent->mRightNode == this) {
+                  parent->mRightNode = (mLeftNode != NULL) ? mLeftNode : mRightNode;
+                  return this;
+            }
+	}
 }

@@ -1,19 +1,24 @@
 CXX = g++
 CFLAGS = -I.
 
-ODIR = obj
+SRCDIR = src
+OBJDIR = obj
+OUTPUTDIR = out
 
-DEPS = simpleNode.h simpleLinkedList.h dynamikArray.h
+DEPS = simpleNode.h simpleLinkedList.h dynamikArray.h binaryTreeNode.h simpleBinarySearchTree.h
 
-OBJ = mainApp.o simpleLinkedList.o dynamikArray.o
+_OBJS = mainApp.o simpleLinkedList.o dynamikArray.o binaryTreeNode.o simpleBinarySearchTree.o
+OBJS = $(patsubst %,$(OBJDIR)/%,$(_OBJS))
 
-$(ODIR)/%.o: %.c $(DEPS)
+$(OBJDIR)/%.o: %.cpp $(DEPS)
 		$(CXX) -c -o $@ $< $(CFLAGS)
 
-mainApp:  $(OBJ)
-	g++ -o $@ $^ $(CFLAGS)
+
+$(OUTPUTDIR)/mainApp:  $(OBJS)
+		$(CXX) -o $@ $^ $(CFLAGS)
 
 .PHONY: clean
 
 clean: 
-	rm -f *.o 
+	rm -f $(OBJDIR)/*.o 
+	rm $(OUTPUTDIR)/mainApp
