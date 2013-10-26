@@ -18,6 +18,21 @@ void reverseString(char input[])
 	}
 }
 
+bool isPrime(int number)
+{
+	for(int i=2 ; i < number ; i++)
+	{
+		if(number%i == 0)
+		{
+			printf("%d is not prime\n", number);
+			return false;
+		}
+	}
+
+	printf("%d is prime\n", number);
+	return true;
+}
+
 //reursive routine to compute the factorial of a given number
 int fact(int value)
 {
@@ -130,6 +145,8 @@ void testMergeSortedArrays()
 		printf("%d ", c[i]);
 	}
 
+	printf("\n");
+	
 	//clean up
 	delete[] a;
 	delete[] b;
@@ -197,4 +214,8 @@ int main(int argc, char* argv[])
 	//printOdds(99);
 
 	testMergeSortedArrays();
+
+	isPrime(5);
+	isPrime(89);
+	isPrime(49);
 }
