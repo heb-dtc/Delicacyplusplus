@@ -1,0 +1,4 @@
+== README
+
+ - simple representations of commun data structure in C++
+ - simple implementations of C++ utility functions
